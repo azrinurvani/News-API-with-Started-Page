@@ -27,7 +27,9 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun OnBoardingScreen(){
+fun OnBoardingScreen(
+    event : (OnBoardingEvent) -> Unit
+){
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -90,8 +92,8 @@ fun OnBoardingScreen(){
                     text = buttonState.value[1],
                     onClick = {
                         coroutineScope.launch {
-                            if (pagerState.currentPage == 3) {
-                                //navigate to Home Screen
+                            if (pagerState.currentPage == 2) {
+                                event(OnBoardingEvent.SaveAppEntry)
                             }else{
                                 pagerState.animateScrollToPage(
                                     page = pagerState.currentPage + 1 //next page
