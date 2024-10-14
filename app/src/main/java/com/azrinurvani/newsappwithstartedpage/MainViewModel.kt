@@ -1,12 +1,11 @@
 package com.azrinurvani.newsappwithstartedpage
 
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.azrinurvani.newsappwithstartedpage.domain.usecases.AppEntryUseCases
+import com.azrinurvani.newsappwithstartedpage.domain.usecases.app_entry.AppEntryUseCases
 import com.azrinurvani.newsappwithstartedpage.presentation.nav_graph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
