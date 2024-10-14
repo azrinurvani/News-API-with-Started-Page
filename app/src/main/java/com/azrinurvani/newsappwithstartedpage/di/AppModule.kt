@@ -12,6 +12,7 @@ import com.azrinurvani.newsappwithstartedpage.domain.usecases.app_entry.ReadAppE
 import com.azrinurvani.newsappwithstartedpage.domain.usecases.app_entry.SaveAppEntry
 import com.azrinurvani.newsappwithstartedpage.domain.usecases.news.GetNews
 import com.azrinurvani.newsappwithstartedpage.domain.usecases.news.NewsUseCases
+import com.azrinurvani.newsappwithstartedpage.domain.usecases.news.SearchNews
 import com.azrinurvani.newsappwithstartedpage.util.Constants.BASE_URL
 import com.azrinurvani.newsappwithstartedpage.util.Constants.CALL_TIMEOUT
 import com.azrinurvani.newsappwithstartedpage.util.Constants.CONNECT_TIMEOUT
@@ -96,7 +97,8 @@ object AppModule {
     @Singleton
     fun provideNewsUseCases(newsRepository: NewsRepository) : NewsUseCases{
         return NewsUseCases(
-            getNews = GetNews(newsRepository = newsRepository)
+            getNews = GetNews(newsRepository = newsRepository),
+            searchNews = SearchNews(newsRepository = newsRepository)
         )
     }
 
