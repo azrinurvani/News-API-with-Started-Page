@@ -28,4 +28,19 @@
         </activity>
     </application>
 
+
+    <queries>
+        <intent>
+            <!--this required if using intent implisit (browsing)-->
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+
+        <intent>
+            <!--this required if using intent implisit (share text)-->
+            <action android:name="android.intent.action.SENDTO"/>
+        </intent>
+    </queries>
+
 </manifest>

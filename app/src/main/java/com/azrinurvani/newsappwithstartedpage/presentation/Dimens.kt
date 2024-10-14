@@ -12,6 +12,7 @@ object Dimens {
     val IndicatorSize = 14.dp
     val PageIndicatorWidth = 52.dp
     val ArticleCardSize = 96.dp
+    val ArticleImageHeight = 248.dp
 
     val SmallIcons = 11.dp
     val IconSize = 20.dp

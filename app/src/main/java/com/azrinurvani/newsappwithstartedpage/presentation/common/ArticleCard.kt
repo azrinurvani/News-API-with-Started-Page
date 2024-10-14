@@ -1,6 +1,5 @@
 package com.azrinurvani.newsappwithstartedpage.presentation.common
 
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -34,7 +33,6 @@ import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.ExtraSmallPadd
 import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.ExtraSmallPadding2
 import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.SmallIcons
 import com.azrinurvani.newsappwithstartedpage.ui.theme.NewsAppWithStartedPageTheme
-import kotlin.math.max
 
 @Composable
 fun ArticleCard(

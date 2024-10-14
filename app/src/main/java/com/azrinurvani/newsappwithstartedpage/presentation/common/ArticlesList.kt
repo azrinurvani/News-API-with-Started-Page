@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.azrinurvani.newsappwithstartedpage.domain.model.Article
-import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.ExtraSmallPadding
 import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.ExtraSmallPadding2
 import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.MediumPadding1
 
