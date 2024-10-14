@@ -7,7 +7,7 @@ object Constants {
     const val BASE_URL = "https://newsapi.org/v2/"
     const val NEWS_DB_NAME = "news_db"
 
-    val CONNECT_TIMEOUT = 120L
-    val READ_TIMEOUT = 120L
-    val CALL_TIMEOUT = 120L
+    const val CONNECT_TIMEOUT = 120L
+    const val READ_TIMEOUT = 120L
+    const val CALL_TIMEOUT = 120L
 }
