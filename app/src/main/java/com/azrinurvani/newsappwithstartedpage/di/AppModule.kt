@@ -2,6 +2,10 @@ package com.azrinurvani.newsappwithstartedpage.di
 
 import android.app.Application
 import android.util.Log
+import androidx.room.Room
+import com.azrinurvani.newsappwithstartedpage.data.local.NewsDao
+import com.azrinurvani.newsappwithstartedpage.data.local.NewsDatabase
+import com.azrinurvani.newsappwithstartedpage.data.local.NewsTypeConverter
 import com.azrinurvani.newsappwithstartedpage.data.manager.LocalUserManagerImpl
 import com.azrinurvani.newsappwithstartedpage.data.remote.NewsApi
 import com.azrinurvani.newsappwithstartedpage.data.repository.NewsRepositoryImpl
@@ -16,6 +20,7 @@ import com.azrinurvani.newsappwithstartedpage.domain.usecases.news.SearchNews
 import com.azrinurvani.newsappwithstartedpage.util.Constants.BASE_URL
 import com.azrinurvani.newsappwithstartedpage.util.Constants.CALL_TIMEOUT
 import com.azrinurvani.newsappwithstartedpage.util.Constants.CONNECT_TIMEOUT
+import com.azrinurvani.newsappwithstartedpage.util.Constants.NEWS_DB_NAME
 import com.azrinurvani.newsappwithstartedpage.util.Constants.READ_TIMEOUT
 import dagger.Module
 import dagger.Provides
@@ -102,4 +107,24 @@ object AppModule {
         )
     }
 
+    @Provides
+    @Singleton
+    fun provideNewsDatabase(
+        application: Application
+    ): NewsDatabase{
+        return Room.databaseBuilder(
+            context = application,
+            klass = NewsDatabase::class.java,
+            name = NEWS_DB_NAME
+        ).addTypeConverter(NewsTypeConverter())
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideNewsDao(newsDatabase: NewsDatabase) : NewsDao{
+        return newsDatabase.newsDao
+    }
 }
