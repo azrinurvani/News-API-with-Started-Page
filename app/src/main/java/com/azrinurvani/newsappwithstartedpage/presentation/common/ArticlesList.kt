@@ -28,11 +28,11 @@ fun ArticlesList(
             contentPadding = PaddingValues(all = ExtraSmallPadding2)
         ) {
             items(count = articles.itemCount){
-                articles[it]?.let {
+                articles[it]?.let { article->
                     ArticleCard(
-                        article = it,
+                        article = article,
                         onClick = {
-                            onClick(it)
+                            onClick(article)
                         }
                     )
                 }
@@ -49,22 +49,27 @@ fun ArticlesList(
     onClick : (Article) -> Unit
 ) {
 
-
-    LazyColumn(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(MediumPadding1),
-        contentPadding = PaddingValues(all = ExtraSmallPadding2)
-    ) {
-        items(count = articles.size){
-            val article = articles[it]
-            ArticleCard(
-                article = article,
-                onClick = {
-                    onClick(article)
-                }
-            )
+    if (articles.isEmpty()){
+        EmptyScreen()
+    }else{
+        LazyColumn(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(MediumPadding1),
+            contentPadding = PaddingValues(all = ExtraSmallPadding2)
+        ) {
+            items(count = articles.size){
+                val article = articles[it]
+                ArticleCard(
+                    article = article,
+                    onClick = {
+                        onClick(article)
+                    }
+                )
+            }
         }
     }
+
+
 
 }
 

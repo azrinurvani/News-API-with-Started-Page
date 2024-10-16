@@ -1,6 +1,5 @@
 package com.azrinurvani.newsappwithstartedpage.presentation.search
 
-import android.widget.Space
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,17 +9,17 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.azrinurvani.newsappwithstartedpage.domain.model.Article
 import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.MediumPadding1
 import com.azrinurvani.newsappwithstartedpage.presentation.common.ArticlesList
 import com.azrinurvani.newsappwithstartedpage.presentation.common.SearchBar
-import com.azrinurvani.newsappwithstartedpage.presentation.nav_graph.Route
 
 
 @Composable
 fun SearchScreen(
     state: SearchState,
     event : (SearchEvent) -> Unit,
-    navigate : (String) -> Unit
+    navigateToDetails : (Article) -> Unit
 ){
 
 
@@ -47,8 +46,8 @@ fun SearchScreen(
             val articles = it.collectAsLazyPagingItems()
             ArticlesList(
                 articles = articles,
-                onClick = {
-                    navigate(Route.DetailsScreen.route)
+                onClick = { article ->
+                    navigateToDetails(article)
                 }
             )
         }

@@ -12,6 +12,7 @@ import com.azrinurvani.newsappwithstartedpage.presentation.bookmark.BookmarkScre
 import com.azrinurvani.newsappwithstartedpage.presentation.bookmark.BookmarkViewModel
 import com.azrinurvani.newsappwithstartedpage.presentation.home.HomeScreen
 import com.azrinurvani.newsappwithstartedpage.presentation.home.HomeViewModel
+import com.azrinurvani.newsappwithstartedpage.presentation.news_navigator.NewsNavigator
 import com.azrinurvani.newsappwithstartedpage.presentation.onboarding.OnBoardingScreen
 import com.azrinurvani.newsappwithstartedpage.presentation.onboarding.OnBoardingViewModel
 import com.azrinurvani.newsappwithstartedpage.presentation.search.SearchScreen
@@ -48,11 +49,7 @@ fun NavGraph(
             composable(
                 route = Route.NewsNavigatorScreen.route
             ) {
-                val viewModel : BookmarkViewModel = hiltViewModel()
-                BookmarkScreen(
-                    state = viewModel.state.value,
-                    navigate = {}
-                )
+                NewsNavigator()
             }
         }
     }

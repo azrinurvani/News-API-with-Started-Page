@@ -26,12 +26,12 @@ import com.azrinurvani.newsappwithstartedpage.domain.model.Article
 import com.azrinurvani.newsappwithstartedpage.presentation.Dimens.MediumPadding1
 import com.azrinurvani.newsappwithstartedpage.presentation.common.ArticlesList
 import com.azrinurvani.newsappwithstartedpage.presentation.common.SearchBar
-import com.azrinurvani.newsappwithstartedpage.presentation.nav_graph.Route
 
 @Composable
 fun HomeScreen(
     articles : LazyPagingItems<Article>,
-    navigate : (String) -> Unit
+    navigateToSearch : () -> Unit,
+    navigateToDetails: (Article) -> Unit
 ){
     val titles by remember{
         derivedStateOf {
@@ -70,9 +70,9 @@ fun HomeScreen(
             readOnly = true,
             onValueChange = {},
             onCLick = {
-                navigate(Route.SearchScreen.route)
+                navigateToSearch()
             },
-            onSearch = {}
+            onSearch = {} //don't have action for event onSearch because
         )
         Spacer(modifier = Modifier.height(MediumPadding1))
         Text(
@@ -90,7 +90,7 @@ fun HomeScreen(
             modifier = Modifier.padding(horizontal = MediumPadding1),
             articles = articles,
             onClick = {
-                navigate(Route.DetailsScreen.route)
+                navigateToDetails(it)
             }
         )
     }

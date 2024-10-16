@@ -8,7 +8,7 @@ import com.azrinurvani.newsappwithstartedpage.domain.model.Article
 
 @Database(
     entities = [Article::class],
-    version = 1
+    version = 2
 )
 @TypeConverters(NewsTypeConverter::class)
 abstract class NewsDatabase : RoomDatabase() {
