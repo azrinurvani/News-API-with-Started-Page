@@ -24,12 +24,14 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import com.azrinurvani.newsappwithstartedpage.R
 import java.net.ConnectException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 @Composable
 fun EmptyScreen(error: LoadState.Error? = null) {
@@ -83,6 +85,7 @@ fun EmptyContent(alphaAnim: Float, message: String, iconId: Int) {
             modifier = Modifier
                 .padding(10.dp)
                 .alpha(alphaAnim),
+            textAlign = TextAlign.Center,
             text = message,
             style = MaterialTheme.typography.bodyMedium,
             color = if (isSystemInDarkTheme()) LightGray else DarkGray,
@@ -99,6 +102,10 @@ fun parseErrorMessage(error: LoadState.Error?): String {
 
         is ConnectException -> {
             "Internet Unavailable."
+        }
+
+        is UnknownHostException ->{
+            "Network Unavailable, please check your connection"
         }
 
         else -> {

@@ -90,9 +90,15 @@ fun handlingPagingResult(
             false
         }
         error != null -> {
+            EmptyScreen(error = error)
+            false
+        }
+
+        articles.itemCount == 0 ->{
             EmptyScreen()
             false
         }
+
         else -> {
             true
         }
